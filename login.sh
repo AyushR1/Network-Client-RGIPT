@@ -13,11 +13,9 @@ function f1() {
   # Make the API request using cURL with URL-encoded payload data
   curl --keepalive -X POST -d "$payload" http://192.168.100.1:8090/login.xml 
 }
-
+f1
 while true; do
-  if ping -q -c 1 -W 1 google.com >/dev/null; then
-    echo "Network is up"
-  else
+  if ! ping -q -c 1 -W 1 google.com >/dev/null; then
     f1
   fi
   sleep 1
