@@ -1,20 +1,15 @@
 #!/bin/bash
 
-function f1 {
-  echo "Network connection type has changed."
-  # Add your commands here to be executed whenever the network connection type changes
+function f1() {
+  echo "Network is not reachable!"
+  # do something here, like restart the network or notify someone
 }
 
-# Get the initial network connection type
-initial_connection_type=$(nmcli -t -f TYPE connection show --active)
-
-# Monitor changes in the network connection type
-nmcli monitor | while read -r line; do
-  # Get the new network connection type
-  new_connection_type=$(echo "$line" | awk '{print $2}')
-  # Compare the new and old connection types
-  if [[ "$initial_connection_type" != "$new_connection_type" ]]; then
+while true; do
+  if ping -q -c 1 google.com >/dev/null; then
+    echo "Network is up"
+  else
     f1
-    initial_connection_type="$new_connection_type"
   fi
+  sleep 1
 done
