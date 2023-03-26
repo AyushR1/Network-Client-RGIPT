@@ -6,7 +6,7 @@ function f1() {
 }
 
 while true; do
-  if ping -q -c 1 google.com >/dev/null; then
+  if ping -q -c 1 -w 0.5 google.com >/dev/null; then
     echo "Network is up"
   else
     f1
