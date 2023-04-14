@@ -8,10 +8,10 @@ function f1() {
   password="admin"
   epochtime=($(date +%s%N) / 1000000)
   # Define the payload as a URL-encoded string
-  payload="mode=191&username=$username&password=$password&producttype=0&a=$epochtime"
+  payload="mode=191&username=$username&password=$password&a=$epochtime&producttype=0"
 
   # Make the API request using cURL with URL-encoded payload data
-  curl --keepalive -X POST -d "$payload" http://192.168.100.1:8090/login.xml 
+  curl --keepalive -X POST -d "$payload" http://192.168.100.1:8090/httpclient.html 
 }
 f1
 while true; do
