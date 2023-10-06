@@ -11,7 +11,7 @@ function f1() {
   payload="mode=191&username=$username&password=$password&a=$epochtime&producttype=0"
 
   # Make the API request using cURL with URL-encoded payload data
-  curl --keepalive -X POST -d "$payload" http://192.168.100.1:8090/httpclient.html 
+  curl --keepalive -X POST -d "$payload" http://172.16.16.16:8090/httpclient.html 
 }
 f1
 while true; do
